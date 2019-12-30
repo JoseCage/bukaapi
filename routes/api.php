@@ -15,7 +15,12 @@ use Illuminate\Http\Request;
 
 // BUKA API
 
-Route::group(['prefix' => 'v1', 'namespace' => 'Api'], function ($api) {
+Route::group(['namespace' => 'Api'], function ($api) {
+    // Auth
+    $api->group(['prefix' => 'auth', 'namespace' => 'Auth'], function($auth) {
+        $auth->post('/login', 'AuthenticateController@authenticate');
+        $auth->post('/register', 'AuthenticateController@register');
+    });
     // Teachers
     $api->group(['prefix' => 'teachers'], function($teacher){
         $teacher->get('/', 'TeacherController@getAllTeachers')->name('teachers');
