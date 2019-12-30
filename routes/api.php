@@ -18,20 +18,20 @@ use Illuminate\Http\Request;
 Route::group(['namespace' => 'Api'], function ($api) {
     // Auth
     $api->group(['prefix' => 'auth', 'namespace' => 'Auth'], function($auth) {
-        $auth->post('/login', 'AuthenticateController@authenticate');
-        $auth->post('/register', 'AuthenticateController@register');
+        $auth->post('/login', 'AuthenticateController@authenticate')->name('login');
+        $auth->post('/register', 'AuthenticateController@register')->name('register');
     });
     // Teachers
-    $api->group(['prefix' => 'teachers'], function($teacher){
+    $api->group(['prefix' => 'teachers', 'middleware' => 'jwt.auth'], function($teacher){
         $teacher->get('/', 'TeacherController@getAllTeachers')->name('teachers');
         $teacher->post('/', 'TeacherController@createNewTeacher')->name('teachers.create');
     });
     // Courses
-    $api->group(['prefix' => 'courses'], function($course){
+    $api->group(['prefix' => 'courses', 'middleware' => 'jwt.auth'], function($course){
         $course->get('/', 'CourseController@getAllCourses')->name('courses');
     });
     // Level
-    $api->group(['prefix' => 'levels'], function($course){
+    $api->group(['prefix' => 'levels', 'middleware' => 'jwt.auth'], function($course){
         $course->get('/', 'LevelController@getLevels')->name('levels');
         $course->post('/', 'LevelController@createNewLevel')->name('levels.create');
     });
