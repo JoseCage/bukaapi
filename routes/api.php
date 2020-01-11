@@ -13,6 +13,18 @@ use Illuminate\Http\Request;
 |
 */
 
+// Route::group(['prefix' => 'courses'], function($course){
+//     $course->get('/', 'Api\CourseController@getAllCourses');
+// });
+
+// Route::group(['prefix' => 'levels'], function($level){
+//     $level->get('/', 'Api\LevelController@getAllLevels');
+// });
+
+// Route::group(['prefix' => 'teachers'], function($level){
+//     $level->get('/', 'Api\TeacherController@getAllTeachers');
+// });
+
 // BUKA API
 
 Route::group(['namespace' => 'Api'], function ($api) {

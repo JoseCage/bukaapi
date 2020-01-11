@@ -15,8 +15,27 @@ class CourseController extends Controller
         return response()->json($courses);
     }
 
-    public function addNewCourse()
+    public function addNewCourse(Request $request)
     {
-        //
+
+        $course = new Course();
+        $course->name = $request['name'];
+        $course->short_description = $request['short_description'];
+        $course->description = $request['description'];
+        $course->price = $request['price'];
+        $course->course_time = $request['course_time'];
+        $course->start_at = $request['start_at'];
+        $course->end_at = $request['end_at'];
+        $course->teacher_id = $request['teacher_id'];
+        $course->schedule = $request['schedule'];
+        $course->link = $request['link'];
+        $course->level_id = $request['level_id'];
+        $course->save();
+
+        return response()->json([
+            'status_code' => 201,
+            'message' => 'Course created successfuly!',
+            'data' => $course
+        ]);
     }
 }
