@@ -2,6 +2,7 @@
 
 namespace Buka\Http\Controllers\Api\Auth;
 
+use App\Services\WeSenderService;
 use Illuminate\Http\Request;
 use Buka\Http\Controllers\Controller;
 use Buka\User;
@@ -79,6 +80,9 @@ class AuthenticateController extends Controller
 
             // Generate the token
             $token = JWTAuth::attempt($data);
+
+            // Send a SMS to the teacher
+        //WeSenderService::send($user->phone, 'Parabéns, ' . $user->name . ' por se cadastrar como professor no Buka App');
 
         } catch (JWTException $e) {
             return response()->json([

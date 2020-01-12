@@ -5,6 +5,7 @@ namespace Buka\Http\Controllers\Api;
 use Illuminate\Http\Request;
 use Buka\Http\Controllers\Controller;
 use Buka\Teacher;
+use Buka\Services\WeSenderService;
 
 class TeacherController extends Controller
 {
@@ -23,6 +24,11 @@ class TeacherController extends Controller
         $teacher->email = $request['email'];
         $teacher->phone = $request['phone'];
         $teacher->save();
+
+        if ($teacher) {
+            // Send a SMS to the teacher
+            WeSenderService::send([$teacher->phone], 'Parabéns, ' . $teacher->first_name . $teacher->last_name . ' por se cadastrar como professor no Buka App');
+        }
 
         return response()->json([
             'status' => 200,

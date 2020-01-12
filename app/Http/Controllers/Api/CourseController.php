@@ -2,6 +2,7 @@
 
 namespace Buka\Http\Controllers\Api;
 
+use App\Services\WeSenderService;
 use Buka\Course;
 use Illuminate\Http\Request;
 use Buka\Http\Controllers\Controller;
@@ -31,6 +32,9 @@ class CourseController extends Controller
         $course->link = $request['link'];
         $course->level_id = $request['level_id'];
         $course->save();
+
+        // Send a SMS to the teacher
+        WeSenderService::send($course->teacher->phone, 'Seu novo curso foi cadastrado!', false);
 
         return response()->json([
             'status_code' => 201,

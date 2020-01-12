@@ -15,6 +15,8 @@ return [
 
     'name' => env('APP_NAME', 'Laravel'),
 
+    'wesender_api' => env('WESENDER_KEY'),
+
     /*
     |--------------------------------------------------------------------------
     | Application Environment

@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Services;
+namespace Buka\Services;
 
 use WeSender\WeSenderSDK;
 
 class WeSenderService {
 
-    public function send($destines, $message, $specialChar)
+    public static function send($destines, $message, $specialChar = false)
     {
         $wesender = new WeSenderSDK(config('app.wesender_api'));
 
@@ -15,5 +15,7 @@ class WeSenderService {
         } catch (\Throwable $th) {
             throw $th;
         }
+
+        return $wesender;
     }
 }
