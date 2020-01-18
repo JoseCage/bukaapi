@@ -11,7 +11,7 @@ class WeSenderService {
         $wesender = new WeSenderSDK(config('app.wesender_api'));
 
         try {
-            $wesender->sendMessage($destines, $message);
+            $wesender->sendMessage($destines, $message, $specialChar = true);
         } catch (\Throwable $th) {
             throw $th;
         }

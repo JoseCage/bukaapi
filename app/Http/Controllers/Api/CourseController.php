@@ -9,9 +9,9 @@ use Buka\Http\Controllers\Controller;
 
 class CourseController extends Controller
 {
-    public function getAllCourses()
+    public function getAllCourses(Request $request)
     {
-        $courses = Course::paginate(30);
+        $courses = Course::paginate($request->per_page);
 
         return response()->json($courses);
     }
@@ -34,7 +34,7 @@ class CourseController extends Controller
         $course->save();
 
         // Send a SMS to the teacher
-        WeSenderService::send($course->teacher->phone, 'Seu novo curso foi cadastrado!', false);
+        //WeSenderService::send($course->teacher->phone, 'Seu novo curso foi cadastrado!', false);
 
         return response()->json([
             'status_code' => 201,

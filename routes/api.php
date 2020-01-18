@@ -43,8 +43,8 @@ Route::group(['namespace' => 'Api'], function ($api) {
         $course->get('/', 'CourseController@getAllCourses')->name('courses');
     });
     // Level
-    $api->group(['prefix' => 'levels', 'middleware' => 'jwt.auth'], function($course){
-        $course->get('/', 'LevelController@getLevels')->name('levels');
-        $course->post('/', 'LevelController@createNewLevel')->name('levels.create');
+    $api->group(['prefix' => 'levels', 'middleware' => 'jwt.auth'], function($level){
+        $level->get('/', 'LevelController@getLevels')->name('levels');
+        $level->post('/', 'LevelController@createNewLevel')->name('levels.create');
     });
 });
