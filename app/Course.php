@@ -16,4 +16,9 @@ class Course extends Model
         'course_time', 'start_at', 'end_at', 'teacher_id',
         'schedule', 'link', 'level_id'
     ];
+
+    protected $attributes = [
+        'status' => 'pendente',
+        'price' => 0
+    ];
 }

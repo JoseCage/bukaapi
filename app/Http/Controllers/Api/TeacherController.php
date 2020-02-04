@@ -13,7 +13,7 @@ class TeacherController extends Controller
 {
     public function getAllTeachers(Request $request)
     {
-        $teachers = Teacher::paginate($request->per_page);
+        $teachers = Teacher::with('courses')->paginate($request->per_page);
 
         return response()->json($teachers);
     }

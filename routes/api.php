@@ -1,7 +1,5 @@
 <?php
 
-use Illuminate\Http\Request;
-
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -37,6 +35,11 @@ Route::group(['namespace' => 'Api'], function ($api) {
     $api->group(['prefix' => 'teachers', 'middleware' => 'jwt.auth'], function($teacher){
         $teacher->get('/', 'TeacherController@getAllTeachers')->name('teachers');
         $teacher->post('/', 'TeacherController@createNewTeacher')->name('teachers.create');
+    });
+    // Students
+    $api->group(['prefix' => 'students', 'middleware' => 'jwt.auth'], function($student){
+        $student->get('/', 'StudentController@getStudents')->name('students');
+        $student->post('/', 'StudentController@addStudent')->name('students.create');
     });
     // Courses
     $api->group(['prefix' => 'courses', 'middleware' => 'jwt.auth'], function($course){

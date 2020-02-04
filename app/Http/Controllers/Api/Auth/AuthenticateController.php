@@ -23,6 +23,8 @@ class AuthenticateController extends Controller
     {
         $credentials = $request->only('email', 'password');
 
+        //dd($credentials);
+
         try {
             // attempt to verify the credentials and create a token for the user
             if (!$token = JWTAuth::attempt($credentials)) {
@@ -72,6 +74,7 @@ class AuthenticateController extends Controller
         $data = $request->only('email', 'password');
 
         try {
+
             $user = User::create([
                 'name' => $request->name,
                 'email' => $request->email,

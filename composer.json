@@ -1,10 +1,10 @@
 {
-    "name": "laravel/laravel",
+    "name": "josecage/bukaapi",
     "type": "project",
-    "description": "The Laravel Framework.",
+    "description": "API de informações de Formação profissional",
     "keywords": [
-        "framework",
-        "laravel"
+        "api",
+        "buka"
     ],
     "license": "MIT",
     "require": {
