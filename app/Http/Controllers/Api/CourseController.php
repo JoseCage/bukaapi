@@ -42,4 +42,9 @@ class CourseController extends Controller
             'data' => $course
         ]);
     }
+
+    public function registerNewStudent(Request $request, $id)
+    {
+        //
+    }
 }

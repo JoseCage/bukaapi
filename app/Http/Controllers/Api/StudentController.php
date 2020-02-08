@@ -53,7 +53,7 @@ class StudentController extends Controller
 
       return response()->json([
         'status' => 200,
-        'message' => 'Teacher Created succesfully!',
+        'message' => 'Student Created succesfully!',
         'data' => $student
     ]);
     }

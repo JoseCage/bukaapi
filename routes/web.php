@@ -14,3 +14,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+// Route::get('mail', function () {
+//     $teacher = Buka\Teacher::first();
+
+//     return new Buka\Mail\TeacherCreated($teacher);
+// });

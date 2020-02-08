@@ -8,6 +8,8 @@ use Buka\Teacher;
 use Buka\Services\WeSenderService;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
+use Mail;
+use Buka\Mail\TeacherCreated;
 
 class TeacherController extends Controller
 {
@@ -52,6 +54,10 @@ class TeacherController extends Controller
         $teacher->save();
 
         Log::info('Foi cadastrado um novo professor');
+
+        if($teacher) {
+            Mail::to($teacher->email)->send(new TeacherCreated($teacher));
+        }
 
         // if ($teacher) {
              // Send a SMS to the teacher

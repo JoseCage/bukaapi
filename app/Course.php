@@ -21,4 +21,9 @@ class Course extends Model
         'status' => 'pendente',
         'price' => 0
     ];
+
+    public function students()
+    {
+        return $this->hasMany(Student::class);
+    }
 }
